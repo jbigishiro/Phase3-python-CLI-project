@@ -42,8 +42,8 @@ UnitPrice: FLOAT
 ### Table: Supplier
 
 SupplierID: INTEGER NOT NULL PRIMARY KEY AUTO INCREMENTED
-CompanyName: STRING 
-Address: STRING 
+CompanyName: STRING
+Address: STRING
 HomePage: STRING UNIQUE
 
 ## Object Relationships
