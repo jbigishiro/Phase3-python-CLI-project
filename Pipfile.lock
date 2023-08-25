@@ -1,12 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "4771b21b1c685fb84d20ea745d375f92889b027a3f4c976f0d7691f2be5d9185"
+            "sha256": "bb4ed22cd0342e4d5ca68e82f04bd533fba4059d8b980ead1a4488190100d20e"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_full_version": "3.8.13",
-            "python_version": "3.8"
+            "python_full_version": "3.8.13"
         },
         "sources": [
             {
@@ -88,7 +87,7 @@
                 "sha256:f82d4d717d8ef19188687aa32b8363e96062911e63ba22a0cff7802a8e58e5f1",
                 "sha256:fc3a569657468b6f3fb60587e48356fe512c1754ca05a564f11366ac9e306526"
             ],
-            "markers": "python_version >= '3' and (platform_machine == 'aarch64' or (platform_machine == 'ppc64le' or (platform_machine == 'x86_64' or (platform_machine == 'amd64' or (platform_machine == 'AMD64' or (platform_machine == 'win32' or platform_machine == 'WIN32'))))))",
+            "markers": "python_version >= '3' and platform_machine == 'aarch64' or (platform_machine == 'ppc64le' or (platform_machine == 'x86_64' or (platform_machine == 'amd64' or (platform_machine == 'AMD64' or (platform_machine == 'win32' or platform_machine == 'WIN32')))))",
             "version": "==2.0.2"
         },
         "importlib-metadata": {
