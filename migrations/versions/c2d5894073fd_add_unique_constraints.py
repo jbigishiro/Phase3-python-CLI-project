@@ -1,8 +1,8 @@
-"""create table
+"""add unique constraints
 
-Revision ID: 5fa6a1901617
-Revises: 0a19aa46378d
-Create Date: 2023-08-25 13:35:28.177235
+Revision ID: c2d5894073fd
+Revises: 
+Create Date: 2023-08-26 13:55:25.006568
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5fa6a1901617'
-down_revision = '0a19aa46378d'
+revision = 'c2d5894073fd'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -22,7 +22,9 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('address', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('address'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('products',
     sa.Column('id', sa.Integer(), nullable=False),

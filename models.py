@@ -10,9 +10,9 @@ class Supplier(Base):
     __tablename__ = "suppliers"
 
     id= Column( Integer(), primary_key=True)
-    name= Column(String())
-    address= Column(String())
-    products= relationship('Product', backref('supplier'))
+    name= Column(String(), unique=True)
+    address= Column(String(), unique=True)
+    products= relationship('Product', backref=backref('supplier'))
 
     def __repr__(self):
         return f'Supplier(id={self.id}, ' + \
