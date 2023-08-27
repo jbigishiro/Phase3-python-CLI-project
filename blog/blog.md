@@ -1,3 +1,3 @@
 # Phase-3 Blog
 
-* coming soon*
+https://dev.to/jbigishiro/table-join-in-sql-oeo
