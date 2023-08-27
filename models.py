@@ -1,8 +1,11 @@
 from sqlalchemy import Column, Integer, create_engine, ForeignKey, Float, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship, backref, sessionmaker
 
 engine = create_engine('sqlite:///database.db')
+engine = create_engine("sqlite:///data.db")
+Session = sessionmaker(bind=engine)
+session = Session()
 
 Base = declarative_base()
 
@@ -31,4 +34,25 @@ class Product(Base):
         return f'Product(id={self.id}, ' + \
             f'Name={self.name}, ' + \
             f'Supplier_id={self.supplier_id})'
+    
+    @classmethod
+    def show_all_products(cls):
+        return session.query(Product.name, Product.unit_price).all()
+    
+    @classmethod
+    def show_product_by_name(cls, product_name):
+        return session.query(Product.name, Product.unit_price).filter(Product.name==product_name).all()
+    
+    @classmethod
+    def add_product(cls, name, unit_price, supplier_id):
+        item = cls(name=name, unit_price=unit_price, supplier_id=supplier_id)
+        session.add(item)
+        session.commit()
+        return item
+    
+    @classmethod
+    def delete_item_by_id(cls, product_id):
 
+        product = session.query(Product).filter(Product.id == product_id).first()
+        session.delete(product)
+        session.commit()
