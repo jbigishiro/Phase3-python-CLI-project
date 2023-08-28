@@ -21,6 +21,11 @@ class Supplier(Base):
         return f'Supplier(id={self.id}, ' + \
             f'Name={self.name}, ' + \
             f'Address={self.address})'
+    
+    @classmethod
+    def search_supplier_by_id(cls, supplier_id):
+        supplier = session.query(cls).filter(cls.id == supplier_id).first()
+        return supplier
 
 class Product(Base):
     __tablename__ = "products"
@@ -37,11 +42,11 @@ class Product(Base):
     
     @classmethod
     def show_all_products(cls):
-        return session.query(Product.name, Product.unit_price).all()
+        return session.query(cls).all()
     
     @classmethod
     def show_product_by_name(cls, product_name):
-        return session.query(Product.name, Product.unit_price).filter(Product.name==product_name).all()
+        return session.query(cls).filter(Product.name==product_name).all()
     
     @classmethod
     def add_product(cls, name, unit_price, supplier_id):
@@ -52,7 +57,6 @@ class Product(Base):
     
     @classmethod
     def delete_item_by_id(cls, product_id):
-
         product = session.query(Product).filter(Product.id == product_id).first()
         session.delete(product)
         session.commit()
