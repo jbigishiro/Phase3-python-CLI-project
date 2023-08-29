@@ -41,11 +41,11 @@ class Product(Base):
             f'Supplier_id={self.supplier_id})'
     
     @classmethod
-    def show_all_products(cls):
-        return session.query(cls).all()
+    def find_product_by_id(cls, product_id):
+        return session.query(cls).filter(Product.id==product_id).first()
     
     @classmethod
-    def show_product_by_name(cls, product_name):
+    def find_product_by_name(cls, product_name):
         return session.query(cls).filter(Product.name==product_name).all()
     
     @classmethod

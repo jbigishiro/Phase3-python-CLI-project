@@ -34,7 +34,7 @@ class Cli():
         self.clear_screen()
         
         search_product= input("Enter the product name").lower()
-        products = Product.show_product_by_name()
+        products = Product.find_product_by_name()
 
         matching_products = []
         for product in products:
@@ -46,16 +46,41 @@ class Cli():
             self.handle_print(matching_products)            
         else:
             print(yellow("Product not found."))
-    def handle_add():
-        pass
+
+    def handle_add(self,):
+        self.clear_screen()
+
+        name = input("Product name: ")
+        unit_price = input("Description: ")
+        supplier_id=input("Supplier ID:")
+        # use while loop to check if price is a valid number
+        while True:
+            unit_price = input("Price: $")
+            if unit_price.isdigit():
+                break
+            else:
+                print(red("Invalid price. Please enter a valid number."))
+
+        Product.add_product(name, unit_price, supplier_id)
+        print(yellow("Product added."))
 
 
     def handle_update():
         pass
 
-    def handle_delete():
+    def handle_delete(self):
 
-        pass
+        self.clear_screen()
+
+        product_id = input(yellow("Enter the ID of the product you want to remove: "))
+                
+        product = Product.find_product_by_id(product_id)
+
+        if not product:
+            print(yellow("Product not found."))
+        else:
+            Product.delete_item_by_id(product_id)
+            print(red("Product removed."))
 
 
     def handle_print(self, products):
