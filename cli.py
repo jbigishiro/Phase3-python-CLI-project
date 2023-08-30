@@ -4,8 +4,7 @@ from prettycli import red, yellow, blue
 
 
 class Cli():
-
-    
+   
     print(blue("WELCOME"))
     print(blue("Search for Products and their Suppliers"))
 
@@ -34,7 +33,7 @@ class Cli():
         self.clear_screen()
         
         search_product= input("Enter the product name").lower()
-        products = Product.find_product_by_name()
+        products = Product.find_product_by_name(search_product)
 
         matching_products = []
         for product in products:
