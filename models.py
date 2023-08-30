@@ -57,6 +57,15 @@ class Product(Base):
     
     @classmethod
     def delete_item_by_id(cls, product_id):
-        product = session.query(Product).filter(Product.id == product_id).first()
+        product = session.query(cls).filter(Product.id == product_id).first()
         session.delete(product)
         session.commit()
+     
+    @classmethod
+    def update_price(cls,product_id,new_unit_price):
+        product = session.query(cls).filter(Product.id == product_id).first()
+        if product:
+            product.unit_price = new_unit_price
+            session.commit()
+        else:
+            print(f"Product with id {product_id} not found.")

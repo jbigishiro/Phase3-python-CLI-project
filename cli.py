@@ -65,15 +65,22 @@ class Cli():
         print(yellow("Product added."))
 
 
-    def handle_update():
-        pass
+    def handle_update(self):
+
+        self.clear_screen()
+
+        product_id = input("Enter the product ID: ")
+        new_price = input("Enter the new unit price: ")
+    
+        Product.update_price(product_id, new_price)
+        print("Product price updated successfully.")
+
 
     def handle_delete(self):
 
         self.clear_screen()
 
-        product_id = input(yellow("Enter the ID of the product you want to remove: "))
-                
+        product_id = input(yellow("Enter the ID of the product you want to remove: "))               
         product = Product.find_product_by_id(product_id)
 
         if not product:
