@@ -1,3 +1,3 @@
 # Phase-3 Project Video
 
-* coming soon*
+https://youtu.be/EOj0xmxYioU

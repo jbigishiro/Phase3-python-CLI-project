@@ -55,7 +55,6 @@ class Cli():
         supplier_id=input("Supplier ID:")
         # use while loop to check if price is a valid number
         while True:
-            unit_price = input("Price: $")
             if unit_price.isdigit():
                 break
             else:
@@ -93,7 +92,7 @@ class Cli():
     def handle_print(self, products):
         for product in products:
                 print((f"Item: {product.name}"))
-                print(f"Unit Price: {product.unit_price}")
+                print(f"Unit Price: {product.unit_price} $")
                 supplier = Supplier.search_supplier_by_id(product.supplier_id)    
                 print(f"Sold by: {supplier.name}")
 
